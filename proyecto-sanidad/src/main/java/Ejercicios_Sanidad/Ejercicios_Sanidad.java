@@ -438,10 +438,11 @@ public class Ejercicios_Sanidad extends JFrame {
 		JButton btnNombre = new JButton("Buscar por Nombre");
 		btnNombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textField_2.getText().equals("")) {
+				String str = textField_2.getText();
+				if (str.equals("")) {
 					JOptionPane.showMessageDialog(null,"Debe escribir el nombre (o una parte) a buscar.");
 				} else {
-					tablasort.setRowFilter(RowFilter.regexFilter(textField_2.getText(), 1));
+					tablasort.setRowFilter(RowFilter.regexFilter("(?i)^"+str, 1));
 					int fila = tablasort.getViewRowCount();
 					if (fila != 0) {
 						JOptionPane.showMessageDialog(null, "Encontrados " + fila + " registros");
