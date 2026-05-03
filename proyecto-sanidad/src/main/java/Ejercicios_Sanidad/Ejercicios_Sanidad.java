@@ -439,9 +439,8 @@ public class Ejercicios_Sanidad extends JFrame {
 		btnNombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String str = textField_2.getText();
-				if (str.equals("")) {
-					JOptionPane.showMessageDialog(null,"Debe escribir el nombre (o una parte) a buscar.");
-				} else {
+				boolean bool = Vacio_o_cumplePatron(PLetras, textField_2, "Debe rellenar el nombre a buscar", "El campo solo debe estar compuesto de carácteres alfabéticos.");
+				if (bool) {
 					tablasort.setRowFilter(RowFilter.regexFilter("(?i)^"+str, 1));
 					int fila = tablasort.getViewRowCount();
 					if (fila != 0) {
@@ -471,9 +470,9 @@ public class Ejercicios_Sanidad extends JFrame {
 		JButton btnDNI = new JButton("Buscar por DNI");
 		btnDNI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textField_1.getText().equals("")) {
-					JOptionPane.showMessageDialog(null,"Debe escribir el DNI a buscar.");
-				} else {
+				boolean bool = Vacio_o_cumplePatron(PNumero, textField_1, "Debe rellenar el DNI a buscar", "El campo debe estar compuesto solo de números.");
+				
+				if (bool) {
 					tablasort.setRowFilter(RowFilter.numberFilter(ComparisonType.EQUAL,Integer.parseInt(textField_1.getText()), 0));
 					int fila = tablasort.getViewRowCount();
 					if (fila != 0) {
